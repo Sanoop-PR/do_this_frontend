@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppState} from "react-native";
+import React from "react";
+import Navigation from "@/navigations/Navigation";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SWRConfig } from "swr";
+
 
 export default function App() {
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <SafeAreaProvider>
+      <SWRConfig
+        value={{
+          provider: () => new Map(),
+          isVisible: () => {
+            return true;
+          },
+          initFocus(callback) {
+            let appState = AppState.currentState;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+            const onAppStateChange = (nextAppState: any) => {
+              if (
+                appState.match(/inactive|background/) &&
+                nextAppState === "active"
+              ) {
+                callback();
+              }
+              appState = nextAppState;
+            };
+
+            // Subscribe to the app state change events
+            const subscription = AppState.addEventListener(
+              "change",
+              onAppStateChange
+            );
+
+            return () => {
+              subscription.remove();
+            };
+          },
+        }}
+      >
+        <Navigation />
+      </SWRConfig>
+    </SafeAreaProvider>
+  );
+} 
