@@ -5,7 +5,7 @@ Introducing Do This, our React Native to-do app. Users have the ability to creat
 
 
 ## 🔗 Links
-[backend]([https://katherineoelsner.com/](https://github.com/Sanoop-PR/do_this_backend.git))
+[backend](https://github.com/Sanoop-PR/do_this_backend.git))
 
 
 
