@@ -40,3 +40,7 @@ Introducing Do This, our React Native to-do app. Users have the ability to creat
 
 ![WhatsApp Image 2024-07-06 at 18 23 56_31d4ea71](https://github.com/Sanoop-PR/do_this_frontend/assets/80612964/71423347-1e17-44cc-88c2-83e1e683f702)
 
+## Demo Video
+![Watch the demo video](https://github.com/user-attachments/assets/427442f4-c201-49f9-8c0a-6cdf89791014)
+
+
